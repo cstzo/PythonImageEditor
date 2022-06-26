@@ -21,7 +21,7 @@ class Filters:
         :param bright:
         :return:
         """
-        
+
         input_image = Image.open(self.image_path)
         input_pixels = input_image.load()
 
@@ -142,6 +142,7 @@ class Filters:
         :param intensity:
         :return:
         """
+
         input_image = Image.open(self.image_path)
         input_pixels = input_image.load()
 
@@ -179,13 +180,12 @@ class Filters:
         for x in range(output_image.width):
             for y in range(output_image.height):
                 r, g, b = input_pixels[x, y]
-                if 60<r<200 or 60<g<200 or 60<b<200:
+                if 60 < r < 200 or 60 < g < 200 or 60 < b < 200:
                     points += 1
                     r_val += r
                     g_val += g
                     b_val += b
 
-                #draw.point((x, y), (r, g, b))
         r_avg = r_val // points
         g_avg = g_val // points
         b_avg = b_val // points

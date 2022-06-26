@@ -143,6 +143,7 @@ def blur(image):
     :param image:
     :return:
     """
+
     global image_from_file, im_even, im_odd
     for m in range(blur_val.get()):
         img = Image.open(image_from_file)
