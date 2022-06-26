@@ -14,8 +14,17 @@ class Filters:
         self.output_name = self.output_path
 
     def cartoon(self, num, beta = 100, bright=0.5):
+        """
+        Creates a cartoon effect on the image
+        :param num:
+        :param beta:
+        :param bright:
+        :return:
+        """
+        
         input_image = Image.open(self.image_path)
         input_pixels = input_image.load()
+
         # Create output image
         output_image = Image.new("RGB", input_image.size)
 
@@ -34,11 +43,17 @@ class Filters:
 
                 draw.point((x, y), (r, g, b))
 
-        output_image.save(self.output_name)
-        Image.open(self.output_name)
-        return self.a
+        output_image.save(self.output_path)
+        Image.open(self.output_path)
+        return self.output_name
 
-    def saturation(self, beta = 100):  # image_path
+    def saturation(self, beta=100):
+        """
+        This function modifies the saturation parameters of the image being edited
+        :param beta:
+        :return:
+        """
+
         input_image = Image.open(self.image_path)
         input_pixels = input_image.load()
         # Create output image
@@ -63,11 +78,17 @@ class Filters:
 
                 draw.point((x, y), (r, g, b))
 
-        output_image.save(self.output_name)
-        Image.open(self.output_name)
-        return self.a
+        output_image.save(self.output_path)
+        Image.open(self.output_path)
+        return self.output_name
 
-    def gamma_correction(self, gamma = 1.0):  # image_path
+    def gamma_correction(self, gamma=1.0):
+        """
+        This function corrects the gamma of the image being edited
+        :param gamma:
+        :return:
+        """
+
         if gamma < 0.3:
             gamma = 0.3
         input_image = Image.open(self.image_path)
@@ -86,11 +107,17 @@ class Filters:
                 b = int(255 * ((b/255)**(1/gamma)))
 
                 draw.point((x, y), (r, g, b))
-        output_image.save(self.output_name)
-        Image.open(self.output_name)
-        return self.a
+        output_image.save(self.output_path)
+        Image.open(self.output_path)
+        return self.output_name
 
     def purple(self, intensity):
+        """
+        This filter applies a purple, galaxy-like effect to the imag being edited
+        :param intensity:
+        :return:
+        """
+
         input_image = Image.open(self.image_path)
         input_pixels = input_image.load()
 
@@ -105,11 +132,16 @@ class Filters:
                 b = (r*g+25)//int(r)
 
                 draw.point((x, y), (r, g, b))
-        output_image.save(self.output_name)
-        Image.open(self.output_name)
-        return self.a
+        output_image.save(self.output_path)
+        Image.open(self.output_path)
+        return self.output_name
 
     def burning(self, intensity):
+        """
+        This function applies a burning effect to the image being edited
+        :param intensity:
+        :return:
+        """
         input_image = Image.open(self.image_path)
         input_pixels = input_image.load()
 
@@ -124,12 +156,17 @@ class Filters:
                 b = int(b * 1.2)
 
                 draw.point((x, y), (r, g, b))
-        output_image.save(self.output_name)
-        Image.open(self.output_name)
-        return self.a
+        output_image.save(self.output_path)
+        Image.open(self.output_path)
+        return self.output_name
 
     def perfect_undertone(self):
-        a = str(self.output_name)
+        """
+        This function is not used but gets the image being edited's undertone color.
+        :return:
+        """
+
+        a = str(self.output_path)
         input_image = Image.open(self.image_path)
         input_pixels = input_image.load()
 
@@ -155,6 +192,6 @@ class Filters:
         for x in range(output_image.width):
             for y in range(output_image.height):
                 draw.point((x, y), (r_avg, g_avg, b_avg))
-        output_image.save(self.output_name)
-        Image.open(self.output_name)
-        return self.a
+        output_image.save(self.output_path)
+        Image.open(self.output_path)
+        return self.output_name
