@@ -10,8 +10,8 @@ class Filters:
 
     def __init__(self, image_path):
         self.image_path = image_path
-        self.output_name = 'last_image_ran.png'
-        self.a = self.output_name
+        self.output_path = 'last_image_ran.png'
+        self.output_name = self.output_path
 
     def cartoon(self, num, beta = 100, bright=0.5):
         input_image = Image.open(self.image_path)
